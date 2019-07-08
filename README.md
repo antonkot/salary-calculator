@@ -42,7 +42,7 @@ We need to have an expandable system of bonuses or deductions.
 - [x] Create fixtures for test cases
 - [x] Implement unit test for `Employee` entity
 - [x] Create `Statement` class
-- [ ] Create rules
+- [x] Create rules
 - [ ] Implement unit tests for rules
 - [ ] Create `SalaryService`
 - [ ] Implement unit tests for `SalaryService`
