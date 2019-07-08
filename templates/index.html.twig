@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Salary Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        td:nth-child(1) { text-align: right; }
+        td:nth-child(2) { width: 25%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+    {# For each employee #}
+    {% for item in data %}
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h4>{{ item.employee.getName() }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <td><b>Base salary</b></td>
+                                <td>${{item.employee.getSalary()}}</td>
+                            </tr>
+
+                            {# if any modifiers applyed show them #}
+                            {% if item.statement.modifiers %}
+                                <tr>
+                                    <td><b>Bonuses & deductions</b></td>
+                                    <td></td>
+                                </tr>
+                                {% for desc, val in item.statement.modifiers %}
+                                <tr>
+                                    <td>{{desc}}</td>
+                                    <td>{{val}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td><b>Subtotal</b></td>
+                                    <td><b>${{ item.statement.subTotal }}</b></td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td>Country tax</td>
+                                <td>{{ country_tax }}%</td>
+                            </tr>
+
+                            {# if any tax discounts applyed show them #}
+                            {% if item.statement.taxDiscounts %}
+                                <tr>
+                                    <td><b>Tax Discounts</b></td>
+                                    <td></td>
+                                </tr>
+                                {% for desc, val in item.statement.taxDiscounts %}
+                                <tr>
+                                    <td>{{desc}}</td>
+                                    <td>{{val}}%</td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+
+                            <tr>
+                                <td>Tax value</td>
+                                <td>${{ item.statement.taxValue }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total</b></td>
+                                <td><b>${{ item.statement.total }}</b></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

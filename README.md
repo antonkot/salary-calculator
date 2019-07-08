@@ -46,4 +46,4 @@ We need to have an expandable system of bonuses or deductions.
 - [x] Implement unit tests for rules
 - [x] Create `SalaryService`
 - [x] Implement unit tests for `SalaryService`
-- [ ] Create Web example
+- [x] Create Web example

@@ -12,6 +12,9 @@ use App\Service\Salary\Statement;
  */
 class SalaryService
 {
+    /**
+     * Country tax rarely changes. Can be used as const.
+     */
     const COUNTRY_TAX = 20;
 
     /**
