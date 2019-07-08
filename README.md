@@ -40,7 +40,7 @@ We need to have an expandable system of bonuses or deductions.
 ## Roadmap
 - [x] Create `Employee` entity
 - [x] Create fixtures for test cases
-- [ ] Implement unit test for `Employee` entity
+- [x] Implement unit test for `Employee` entity
 - [ ] Create `Statement` class
 - [ ] Create rules
 - [ ] Implement unit tests for rules
