@@ -47,3 +47,27 @@ We need to have an expandable system of bonuses or deductions.
 - [x] Create `SalaryService`
 - [x] Implement unit tests for `SalaryService`
 - [x] Create Web example
+
+## How to install
+
+1. You will need Docker v18 or higher
+1. And docker-compose v1.24 or higher
+1. Clone this repository and navigate to the project folder
+1. Run `docker-compose up`
+1. Open http://localhost:8888 in your browser
+
+## How to tests
+Run `docker-compose run --rm composer ./bin/phpunit`
+
+## How to expand
+1. Create new rule class that implements `App\Service\Salary\RuleInterface`
+2. Implement your logic inside `apply` function. Call `Statement::addModifier` and `Statement::addTaxDiscount` methods when needed.
+3. Create `App\Service\Salary\SalaryService` instance (or inject it) in your main code (i.e. in controller). Configure it by adding your rule to it `$service->addRule(new MyRule())`.
+4. You can chain multiple rules:  
+```php
+$service
+    ->addRule(new AgeRule())
+    ->addRule(new KidsRule())
+    ->addRule(new CarRule());
+```
+5. Call `SalaryService::calculate` method to get the statement for employee
